@@ -1,0 +1,67 @@
+.register{
+    margin-top: 30px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);  */
+   
+}
+
+.register_header{
+    font-size: 30px;
+    text-align: center;
+    font-weight: 700;
+    padding-bottom: 20px;
+    color: antiquewhite;
+}
+
+.register_form{
+    background-color:rgb(19, 108, 89);
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding-top:20px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.register_input{
+    background-color: rgb(255, 255, 255);
+    margin: 4px 0px 0px 10px;
+    border-radius: 10px;
+    height: 30px;
+    width: 450px;
+    padding: 10px;
+    border: none;
+    font-size: 20px;
+}
+
+.register_button{
+    width: 100px;
+    height: 25px;
+    font-size: 16px;
+    border-radius: 16px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: bisque;
+    border: none;
+}
+
+@media screen and (max-width:480px) {
+    .register{
+        height: 800px;
+    }
+    .register_form{
+        width: 300px;
+    }
+    .register_input{
+        width: 250px;
+    }
+    
+}

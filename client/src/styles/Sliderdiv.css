@@ -1,0 +1,15 @@
+.slider{
+    height: 500px;
+    background-color: rgba(14, 141, 101, 0.356);
+    display:flex ;
+    justify-content: center;
+    align-items:center ;
+}
+
+.slider section{
+    display: flex;
+    justify-content:space-around ;  
+}
+.slider section img{
+    width: 30%;
+}
