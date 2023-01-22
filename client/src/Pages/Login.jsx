@@ -3,7 +3,8 @@ import "../styles/login.css"
 import { NavLink } from 'react-router-dom'
 
 function Login() {
-  
+  const [showPassword, setShowPassword] = useState(false)
+
   const [user,setUser]=useState({
     email:"",
     password:""
@@ -17,6 +18,25 @@ function Login() {
       ...user,
       [name]:value
     })
+  }
+
+  function loginuser(e){
+    e.preventDefault();
+
+    const { email, password } = user;
+
+    if (email === "") {
+      alert("Please enter ur email")
+    }
+    else if (!email.includes("@")) {
+      alert("enter valid email")
+    }
+    else if (password === "") {
+      alert("Please enter password")
+    }
+    else{
+      console.log("Logged in successfully")
+    }
   }
   
   
@@ -35,16 +55,22 @@ function Login() {
         />
 
         <div className='login_text'>Password</div>
-        <input 
-          type="password" 
-          className='login_input'
-          autoComplete="new-password"
-          name="password"
-          value={user.password}
-          onChange={handleChange}
-        />
+        <div className="password_container">
+          <input 
+            type={!showPassword?"password":"text"}
+            className='login_input'
+            autoComplete="new-password"
+            name="password"
+            value={user.password}
+            onChange={handleChange}
+          />
+          <div className="eye" onClick={()=>setShowPassword(!showPassword)}>
+            {!showPassword?<i class="fa-solid fa-eye-slash"></i>:<i class="fa-solid fa-eye"></i>}
+          </div>
+        </div>
+        
 
-        <button className='login_button'>Login</button>
+        <button className='login_button' onClick={loginuser}>Login</button>
         
         <div className="registerL">
           <div className='noacc'>Don't have account?</div>

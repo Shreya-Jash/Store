@@ -1,7 +1,12 @@
 import React,{useState} from "react";
 import "../styles/Register.css"
-
+import { NavLink } from "react-router-dom";
 function Register() {
+  
+  const [showPassword, setShowPassword] = useState(false) //password show/hide state
+  const [showCPassword, setShowCPassword] = useState(false)
+
+  //get input values
   const [user,setUser]=useState({
     name:"",
     email:"",
@@ -10,15 +15,58 @@ function Register() {
     cpassword:" "
   })
 
+  // console.log(user)
   function handleChange(e)
   {
+    //console.log(e.target.value)
     const {name,value}=e.target
-    // console.log(e.target)
+    //console.log(e.target)
     setUser({
       ...user,
       [name] :value
     })
   }
+
+  const addUserdata = (e) => {
+    e.preventDefault();
+
+    const { name, email, phoneNumber, password, cpassword } = user;
+
+    if(name === ""){
+      alert("please enter ur name");
+    }
+    else if (email === "") {
+      alert("Please enter ur email")
+    }
+    else if (!email.includes("@")) {
+      alert("enter valid email")
+    }
+    else if (phoneNumber === "") {
+      alert("Enter valid ph no")
+    }
+    // else if (phoneNumber.length===10) {
+    //   alert("Enter valid ph no")
+    // }
+    else if (password === "") {
+      alert("Please enter password")
+    }
+    else if(password.length < 6 ){
+      alert("password must be 6char")
+    }
+    else if (cpassword === "") {
+      alert("Please enter cpassword")
+    }
+    else if(cpassword.length < 6 ){
+      alert("password must be 6char")
+    }
+    else if (password != cpassword) {
+      alert("Password mismatched")
+    }
+    else{
+      console.log("Registration successful")
+    }
+}
+
 
   return (
     <div className="register">
@@ -54,26 +102,42 @@ function Register() {
         />
 
         <div className='login_text'>Password</div>
-        <input
-          type="password"
-          className="register_input"
-          name="password"
-          onChange={handleChange}
-          value={user.password}
-        />
+        <div className="password_container">
+          <input
+            type={!showPassword?"password":"text"}
+            className="register_input"
+            name="password"
+            onChange={handleChange}
+            value={user.password}
+          />
+          <div className="eye" onClick={()=>setShowPassword(!showPassword)}>
+            {!showPassword?<i class="fa-solid fa-eye-slash"></i>:<i class="fa-solid fa-eye"></i>}
+          </div>
+        </div>
+        
 
         <div className='login_text'>Confirm Password</div>
-        <input
-          type="password"
-          className="register_input"
-          name="cpassword"
-          onChange={handleChange}
-          value={user.cpassword}
-        />
+        <div className="password_container">
+          <input
+            type={!showCPassword?"password":"text"}
+            className="register_input"
+            name="cpassword"
+            onChange={handleChange}
+            value={user.cpassword}
+          />
+          <div className="eye" onClick={()=>setShowCPassword(!showCPassword)}>
+              {!showCPassword?<i class="fa-solid fa-eye-slash"></i>:<i class="fa-solid fa-eye"></i>}
+            </div>
+        </div>
+        
 
-        <button type="submit" className="register_button">
+        <button type="submit" className="register_button" onClick={addUserdata}>
           Register
         </button>
+        <div className="registerL">
+          <div className='noacc'>Don't have account?</div>
+          <NavLink to="/Login" className="link">Login</NavLink>
+        </div>
       </form>
     </div>
   );
