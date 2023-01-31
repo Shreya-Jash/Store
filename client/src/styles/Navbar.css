@@ -16,6 +16,7 @@ nav{
     position: sticky;
     z-index: 20;
     width: 100%;
+    padding-top: 10px;
 }
 
 .shop-name{

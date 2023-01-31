@@ -27,7 +27,7 @@ function Register() {
     })
   }
 
-  const addUserdata = (e) => {
+  const addUserdata = async(e) => {
     e.preventDefault();
 
     const { name, email, phoneNumber, password, cpassword } = user;
@@ -63,7 +63,26 @@ function Register() {
       alert("Password mismatched")
     }
     else{
-      console.log("Registration successful")
+      //console.log("Registration successful")
+      
+      const data = await fetch("http://localhost:8000/register",{
+        method: "POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          name,email,phoneNumber,password,cpassword
+        })
+      })
+
+      const res = await data.json()
+      // console.log(res)
+
+      if(res.status === 201){
+        alert("Registration successfully done");
+        setUser({...user,name:"",email:"",phoneNumber:"",password:"",cpassword:""})
+      }
+    
     }
 }
 

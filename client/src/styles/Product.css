@@ -36,7 +36,16 @@
 }
 
 .item-description{
-    margin-top: 10px;
-    padding-bottom: 6px;
+    margin: 0px;
+}
+.item-description p{
+    margin: 0px;
+}
+
+.productButton{
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+    padding: 4px;
 }
 
